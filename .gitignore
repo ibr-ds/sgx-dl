@@ -1,0 +1,16 @@
+.idea/
+cmake-build-debug/
+build/
+
+.libs/
+
+*_u.c
+*_u.h
+*_t.c
+*_t.h
+*.pem
+*.o
+*.i
+*.lo
+*.la
+*.slo

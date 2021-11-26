@@ -1,0 +1,26 @@
+enclave {
+    from "sgx_tstdc.edl" import *;
+    from "dl_library.edl" import *;
+
+
+
+    trusted {
+        public void ecall_test([in, string] char *patch_file);
+        public void ecall_test2([in, string] char *patch_file);
+        public void ecall_bench();
+        public void ecall_patch();
+        public void ecall_start_bench([user_check] uint64_t *ctr);
+        public void ecall_stop_bench();
+
+        public sgx_status_t ecall_init_bench();
+        public int ecall_add_bench();
+        public int ecall_load_bench();
+        public void ecall_get_cycles([user_check] uint64_t *vals);
+    };
+
+    untrusted {
+        void ocall_print_string([in, string] const char *str);
+        void ocall_map_file([in, string] const char *path, [out] void **addr, [out] size_t *size);
+        void ocall_munmap([user_check] void *addr, size_t size);
+    };
+};

@@ -1,0 +1,25 @@
+enclave
+{
+    from "dl_library.edl" import *;
+
+    include "../include-test/test_structs.h"
+
+    trusted
+    {
+        public void init(void);
+        public void measurement(void);
+        public void thread_test(void);
+        public void thread_init(void);
+    };
+
+    untrusted
+    {
+        void* read_file([in, string] char* file_path, [in, out]int* file_size);
+        void free_file([user_check] void* ptr);
+
+        void measurement_start_timer(void);
+        void measurement_stop_timer(void);
+
+        void ocall_print_string([in, string] const char *str);
+    };
+};

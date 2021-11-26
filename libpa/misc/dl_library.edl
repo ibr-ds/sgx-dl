@@ -1,0 +1,52 @@
+enclave
+{
+	from "sgx_tstdc.edl" import *;
+
+	struct elf_section_symtab_t
+	{
+		void* ptr_1;
+		void* ptr_2;
+		void* ptr_3;
+		uint32_t size_1;
+	};
+
+	include "pa_error.h"
+	include "__debug.h"
+
+	trusted
+	{
+		public void ecall_dl_start_shuffling();
+	};
+
+
+	untrusted
+	{
+		dl_status_t _pa_get_symtab([out] struct elf_section_symtab_t* sections, [in, string] char* enclave_path);
+		dl_status_t _pa_unmap_enclave(void);
+
+		void *ocall_malloc(size_t size);
+		void ocall_free([user_check] void *addr);
+
+#ifdef DEBUG
+		void debug_print_int([user_check] int* ptr);
+		void debug_print_long_int([user_check] long int* ptr);
+		void debug_print_double([user_check] double* ptr);
+		void debug_print([user_check] char* string);
+		void debug_print_error([user_check] int* ptr);
+		void debug_print_pointer([user_check]void* ptr);
+		void debug_print_fct_table_t([user_check] void* ptr);
+		void debug_print_elf_header([user_check] void* ptr);
+		void debug_print_elf_section_header([user_check] void* ptr, [user_check] char* stringTable,int id);
+		void debug_print_elf_relocation([user_check] void* ptr);
+		void debug_print_elf_symbol([user_check] void* ptr, [user_check] char* stringTable);
+		void debug_print_file_table_t([user_check] void* ptr);
+		void debug_print_obj_table_t([user_check] void* ptr);
+		void debug_print_mem_ctl_t([user_check] void* ptr);
+		void debug_print_subcall_table_t([user_check] void* ptr);
+		void debug_print_caller_table_t([user_check] void* ptr);
+		void debug_print_rel_table_t([user_check] void* ptr);
+		void debug_print_lru_table_t([user_check] void* ptr);
+		void debug_print_enclave_fct_table_t([user_check] void* ptr);
+#endif
+	};
+};
