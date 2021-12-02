@@ -9,20 +9,18 @@
 6. `make`
 
 
-## Compile Rust code:
-`rustc -Cpanic=abort --emit obj -O lib.rs`
-
-
 ## Example apps
 
-### bin/exampleapp test
+Navigate into `build/bin`
+
+### `exampleapp test`
 
 Simple small test of the library
 
-### bin/exampleapp base & bin/examplepp patch
+### `exampleapp base` and `examplepp patch`
 
 Baseline and path for function executions benchmark, not used in the paper
 
-### bin/exampleappbench
+### `exampleappbench`
 
 Microbenchmark of the paper, add and load 10000 empty functions
