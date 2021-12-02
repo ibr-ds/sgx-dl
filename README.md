@@ -1,5 +1,22 @@
 # sgx-dl
 
+## Paper
+
+The paper will be presented at Middleware 2021 and is available here: https://dl.acm.org/doi/10.1145/3464298.3476134
+
+Please cite us if you use our work in your research:
+```
+@inproceedings{weichbrodt2021middleware,
+  author = {Weichbrodt, Nico and Heinemann, Joshua and Almstedt, Lennart and Aublin, Pierre-Louis and Kapitza, R\"{u}diger},
+  title = {{sgx-Dl: Dynamic Loading and Hot-Patching for Secure Applications: Experience Paper}},
+  year = {2021},
+  doi = {10.1145/3464298.3476134},
+  booktitle = {Proceedings of the 22nd International Middleware Conference},
+  series = {Middleware '21}
+}
+```
+
+
 ## Setup
 
 1. `git clone <this-repo>`
